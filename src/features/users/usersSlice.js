@@ -1,19 +1,17 @@
-const initialState = {
-  users: [],
-};
+import { createSlice } from "@reduxjs/toolkit";
 
-function usersReducer(state = initialState, action) {
-  switch (action.type) {
-    case "users/add":
-      console.log("adding ", action.payload);
-      return {
-        ...state,
-        users: [...state.users, action.payload],
-      };
+const usersSlice = createSlice({
+    name: 'users',
+    initialState: {
+        users: []
+    },
+    reducers: {
+        add: (state, action) => {
+            console.log('adding ', action.payload)
+            state.users.push(action.payload);
+        }
+    }
+});
 
-    default:
-      return state;
-  }
-}
-
-export default usersReducer;
+export const { add } = usersSlice.actions;
+export default usersSlice.reducer;

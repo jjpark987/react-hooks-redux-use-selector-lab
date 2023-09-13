@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { add } from "./usersSlice";
 
 function UserInput() {
   const dispatch = useDispatch();
@@ -18,7 +19,7 @@ function UserInput() {
 
   function handleOnSubmit(event) {
     event.preventDefault();
-    dispatch({ type: "users/add", payload: formData });
+    dispatch(add(formData));
   }
 
   return (
